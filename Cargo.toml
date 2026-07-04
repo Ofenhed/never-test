@@ -1,0 +1,13 @@
+[package]
+name = "never-test"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+
+[dependencies]
+never-say-never = { version = "6.6.666", optional = true }
+
+[features]
+never = ["dep:never-say-never"]
+infallible = []
