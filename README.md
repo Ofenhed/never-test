@@ -137,4 +137,4 @@ _RNvMCsjy9AYFZhMqZ_10never_testNtB2_11MyContainer3new
 _RNvMCsjy9AYFZhMqZ_10never_testNtB2_11MyContainer8do_stuff
 ```
 
-What this tells me is that the string `MyContainer::do_stuff` is removed in both Debug and Release mode if `MyContainer` contains a type that cannot be constructed. In release mode, the entire function signature is removed, while the behavior in debug mode is a little bit harder to interpret. It's hard to tell where this optimization happens; modifying [`test.sh`](test.sh) to look at `libnever_test.rlib` instead does not seem to show any early optimization.
+What this tells me is that the string `MyContainer::do_stuff` is removed in both Debug and Release mode if `MyContainer` contains a type that cannot be constructed. In release mode, the entire function signature is removed, while the behavior in debug mode is a little bit harder to interpret, but it still shows that the function body is missing from the debug builds as well. It's hard to tell where this optimization happens; modifying [`test.sh`](test.sh) to look at `libnever_test.rlib` instead does not seem to show any early optimization.
