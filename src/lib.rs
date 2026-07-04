@@ -15,24 +15,25 @@ pub struct MyContainer(Arc<str>, Appendix);
 
 impl MyContainer {
     pub fn do_stuff(&self) {
-        println!("MyContainer::do_stuff: My container contains {}", self.0)
+        eprintln!("MyContainer::do_stuff is included in the binary");
+        println!("My container contains {}", self.0)
     }
 
     pub fn to_inner(self) -> Arc<str> {
-        eprintln!("MyContainer::to_inner: Doing to-inner on MyContainer");
+        eprintln!("MyContainer::to_inner is included in the binary");
         self.0
     }
 
     pub fn replace(&mut self, n: Arc<str>) {
-        eprintln!("MyContainer::replace: Doing replace on MyContainer");
+        eprintln!("MyContainer::replace is included in the binary");
         self.0 = n
     }
 
     #[inline(never)]
-    pub fn new() -> Option<Self> {
+    pub fn new(s: &str) -> Option<Self> {
         eprintln!("Creating container");
         #[cfg(not(feature = "no-constructor"))]
-        return Some(MyContainer("The contents of my container".into(), ()));
+        return Some(MyContainer(s.into(), ()));
         #[allow(unreachable_code)]
         None
     }
