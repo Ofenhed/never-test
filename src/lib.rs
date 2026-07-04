@@ -31,7 +31,7 @@ impl MyContainer {
     #[inline(never)]
     pub fn new() -> Option<Self> {
         eprintln!("Creating container");
-        #[cfg(all(not(feature = "never"), not(feature = "infallible")))]
+        #[cfg(not(feature = "no-constructor"))]
         return Some(MyContainer("The contents of my container".into(), ()));
         #[allow(unreachable_code)]
         None

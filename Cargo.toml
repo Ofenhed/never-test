@@ -9,5 +9,6 @@ edition = "2024"
 never-say-never = { version = "6.6.666", optional = true }
 
 [features]
-never = ["dep:never-say-never"]
-infallible = []
+no-constructor = []
+never = ["dep:never-say-never", "no-constructor"]
+infallible = ["no-constructor"]
